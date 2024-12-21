@@ -14,6 +14,7 @@ kubectl -n default run ${SERVICE_NAME} \
   --expose=true --port=${PORT} \
   tcp-listen:${PORT},fork,reuseaddr \
   tcp-connect:${ENDPOINT}:${PORT} 
-  
+
 echo "Doing port-forward to access locally"
+sleep 5
 kubectl -n default port-forward service/${SERVICE_NAME} ${PORT}:${PORT}
